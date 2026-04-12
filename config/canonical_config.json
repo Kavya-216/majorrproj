@@ -1,0 +1,64 @@
+{
+  "reconciliation_frozen_at_utc": "2026-04-12T00:00:00Z",
+  "encryption": {
+    "mode": "AES-256-CBC",
+    "integrity": "HMAC-SHA256",
+    "compression": "zlib",
+    "max_payload_bytes_hard": 1000,
+    "payload_bytes_engineering_target": 116
+  },
+  "detection": {
+    "confidence_threshold_mode": "class_specific",
+    "default_threshold": 0.85,
+    "thresholds": {
+      "gunshot": 0.9,
+      "chainsaw": 0.88,
+      "vehicle": 0.85
+    }
+  },
+  "power": {
+    "quiescent_mw": 50.0,
+    "battery_mah_default": 5000,
+    "battery_voltage": 3.7,
+    "inference_window_seconds": 1.0,
+    "frame_hop_ms": 10,
+    "tx_power_profile": {
+      "default_dbm": 20,
+      "fallback_dbm": 14,
+      "default_mw": 100,
+      "fallback_mw": 25
+    }
+  },
+  "network": {
+    "lora_sf_default": 9,
+    "allowed_sfs": [7, 8, 9, 10, 11, 12],
+    "max_retries": 2,
+    "queue_limit": 40,
+    "latency_target_p95_seconds": 8.0,
+    "delivery_target_min": 0.95
+  },
+  "interfaces": {
+    "arch5_input_schema": {
+      "class_id": "int",
+      "confidence": "float",
+      "timestamp": "int"
+    },
+    "arch6_output": [
+      "encrypted_payload_bytes",
+      "envelope_metadata",
+      "decryptor_parser"
+    ],
+    "arch7_output": [
+      "trajectory_24h",
+      "trajectory_30d",
+      "scenario_comparison"
+    ],
+    "arch8_output": [
+      "delivery_rate",
+      "latency_distribution",
+      "packet_loss",
+      "queue_stats",
+      "recommendations"
+    ]
+  }
+}
