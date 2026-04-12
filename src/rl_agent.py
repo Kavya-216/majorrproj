@@ -75,9 +75,11 @@ class RLAgent:
             
         returns = torch.tensor(returns)
         if len(returns) > 1:
-            returns = (returns - returns.mean()) / (returns.std() + 1e-9) # Normalize
-        else:
-            returns = returns - returns.mean() # Center only
+            std = returns.std()
+            if std > 1e-9:
+                returns = (returns - returns.mean()) / std
+            else:
+                returns = returns - returns.mean()
         
         policy_losses = []
         value_losses = []

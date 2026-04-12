@@ -75,7 +75,7 @@ if st.button("Run Causal Discovery"):
                 png_str = pyd.create_png()
                 st.image(png_str, caption="Learned Causal Graph")
             except Exception as e:
-                st.info(f"Graphviz binary not found. Using NetworkX for visualization instead.")
+                st.info("Graphviz not found. Using NetworkX for visualization instead.")
                 try:
                     import networkx as nx
                     
