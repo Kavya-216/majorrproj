@@ -1,0 +1,10 @@
+streamlit==1.51.0
+pandas==2.3.3
+numpy==2.3.5
+scikit-learn==1.7.2
+causal-learn==0.1.4.3
+torch==2.9.1
+dowhy==0.14
+tqdm==4.67.1
+networkx==3.5
+matplotlib==3.10.7
