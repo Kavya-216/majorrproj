@@ -16,7 +16,8 @@ ARCH_8 simulation is fully Python and implemented in src/ecosentry/arch8_network
 - docs/RECONCILIATION_TABLE.md: conflict resolution table
 - docs/INTEGRATION_KEEP_DELETE.md: what to keep/delete when integrating
 - docs/info/: architecture reference markdown files
-- artifacts/: generated reports from pipeline execution
+- notebooks/: execution workflows and visualizations
+- results/: generated reports from pipeline execution
 
 ## Prerequisites
 
@@ -44,29 +45,27 @@ pytest -q
 
 Expected result: all tests pass.
 
-## Run stages
+## Run notebooks
 
-Run all stages:
+Open the unified notebook and execute the workflow from end to end:
 
 ```bash
 cd /workspaces/majorrproj
-python -m ecosentry --stage all --config config/canonical_config.json --out artifacts
+python -m notebook notebooks/00_master_pipeline.ipynb
 ```
 
-Run individual stages:
+Or open individual notebooks for stage-level exploration:
 
-```bash
-python -m ecosentry --stage arch6 --config config/canonical_config.json --out artifacts
-python -m ecosentry --stage arch7 --config config/canonical_config.json --out artifacts
-python -m ecosentry --stage arch8 --config config/canonical_config.json --out artifacts
-```
+- `notebooks/01_arch6_payload.ipynb`
+- `notebooks/02_arch7_energy.ipynb`
+- `notebooks/03_arch8_network.ipynb`
 
-## Artifacts produced
+## Results produced
 
-- artifacts/arch6_report.json
-- artifacts/arch7_report.json
-- artifacts/arch8_report.json
-- artifacts/pipeline_summary.json
+- results/arch6_report.json
+- results/arch7_report.json
+- results/arch8_report.json
+- results/pipeline_report.json
 
 ## Integration with friend's ARCH_1 to ARCH_5
 
@@ -85,7 +84,6 @@ Exact integration sequence:
 	- src/ecosentry/arch7_energy.py
 	- src/ecosentry/arch8_network.py
 	- src/ecosentry/contracts.py
-	- src/ecosentry/pipeline_runner.py
 	- config/canonical_config.json
 3. Ensure ARCH_5 output maps to this strict contract:
 	- class_id: int in {0,1,2}
